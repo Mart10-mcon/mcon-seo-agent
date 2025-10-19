@@ -204,10 +204,10 @@ const ChatWindow = ({
 
   return (
     <>
-      {/* Backdrop (Mobile) */}
+      {/* Backdrop */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black/30 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/20 lg:bg-black/10 z-40"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -219,8 +219,8 @@ const ChatWindow = ({
         role="dialog"
         aria-label="Workflow chat"
         className={`
-          fixed lg:absolute top-0 right-0 h-full w-full lg:w-[480px]
-          bg-white shadow-2xl lg:shadow-xl border-l border-gray-200
+          fixed top-0 right-0 h-full w-full lg:w-[480px]
+          bg-white shadow-2xl border-l border-gray-200
           transform transition-transform duration-300 ease-out
           z-50 flex flex-col
           ${isOpen ? 'translate-x-0' : 'translate-x-full'}

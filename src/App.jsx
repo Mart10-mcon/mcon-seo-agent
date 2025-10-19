@@ -57,22 +57,20 @@ function App() {
           unreadMessages={unreadMessages}
         />
 
-        <div className="flex-1 flex overflow-hidden relative">
-          {/* Main content area with tools - Full width when chat closed */}
-          <div className="flex-1 overflow-y-auto">
-            <Layout onToolSelect={handleToolLaunch} selectedTool={selectedTool} />
-          </div>
-
-          {/* Slide-out Chat Panel */}
-          <ChatWindow
-            selectedTool={selectedTool}
-            isOpen={isChatOpen}
-            onClose={() => setIsChatOpen(false)}
-            onNewMessage={handleNewMessage}
-            onMessagesRead={handleMessagesRead}
-          />
+        {/* Main content area with tools - Always full width */}
+        <div className="flex-1 overflow-y-auto">
+          <Layout onToolSelect={handleToolLaunch} selectedTool={selectedTool} />
         </div>
       </div>
+
+      {/* Slide-out Chat Panel - Fixed overlay, outside main layout */}
+      <ChatWindow
+        selectedTool={selectedTool}
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+        onNewMessage={handleNewMessage}
+        onMessagesRead={handleMessagesRead}
+      />
 
       {/* Floating Action Button - Only show when chat is closed */}
       {!isChatOpen && (
